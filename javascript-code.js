@@ -1,4 +1,4 @@
-var myLibrary = function () {
+var myLibrary = function (string) {
 	var isANumber = function (number) {
 		if(number.length != 12) {
 			return false;
@@ -12,7 +12,7 @@ var myLibrary = function () {
 			}
 		}
 		return true;
-	}
+	};
 	var isEmail = function (email) {
 		b1 = false;
 		for (var e = 0; e < email.length; e++) {
@@ -25,20 +25,19 @@ var myLibrary = function () {
 			}
 		}
 		return false;		
-	}
+	};
 
 	var isURL = function (url) {
 		return url.indexOf("http:")==0 || url.indexOf("https:")==0;
-	}
+	};
 	var titleCase = function (word) {
 		var text = word.split(" ");
 		text.toUpperCase();
-		}
+	};
 	var actualNumber = function (convert) {
 		return parseInt(convert);
-
-	}	
-	var valueArray = function (search,digit) {
+	};	
+	var smallValueArray = function (search,digit) {
 		for (var a = 0; a < search.length; a++) {
 			if (parseInt(search[a]) > digit) {
 				return search[a];
@@ -46,12 +45,34 @@ var myLibrary = function () {
 				return false;
 			}
 		}
-	}	
-}
+	};	
+	var totalValueArray = function (find) {
+		for (var a = 0; a < find.length; a++){
+			var totalNum = find[a];
+		}
+		return totalNum;
+	};
+	return {
+		"string": string,
+		"isANumber": isANumber,
+		"isEmail": isEmail,
+		"isURL": isURL,
+		"titleCase": titleCase,
+		"actualNumber": actualNumber,
+		"smallValueArray": smallValueArray,
+		"totalValueArray": totalValueArray
+	};
+};
 
 var exercise1 = function () {
-	stringChar = prompt("123-456-7890");
-	stored = myLibrary()(stringChar);
-
-
+	var lib = myLibrary();
+	stringChar = prompt("Input character");
+	lib.isANumber(stringChar);
+	if (lib.isANumber(stringChar) == true) {
+		console.log("works");
+	}
+	
+	
+}
+exercise1();
 	
