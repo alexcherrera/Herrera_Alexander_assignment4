@@ -28,7 +28,9 @@ var myLibrary = function () {
 	};
 
 	var isURL = function (url) {
-		return url.indexOf("http:")==0 || url.indexOf("https:")==0;
+		if (url.indexOf("http:")==0 || url.indexOf("https:")==0) {
+			return true;
+		}
 	};
 	var titleCase = function (word) {
 		var text = word.split(" ");
@@ -66,7 +68,7 @@ var myLibrary = function () {
 
 var exercise1 = function () {
 	var lib = myLibrary();
-	 stringChar = prompt("Input characters");
+	 stringChar = prompt("Input phone number");
 	var inIsANumFunction = lib.isANumber(stringChar);
 	if (inIsANumFunction == true) {
 		console.log("Does a string follow a 123-456-7890 patter\nlike a phone number? The answer is " + inIsANumFunction + ".");
@@ -91,7 +93,7 @@ var exercise1 = function () {
 		}
 		ThirdSection: {
 			var storeSetNum = stringChar.substring(finalDash + 1 ,calLength - 1);
-			console.log("The last set of numbers: " + storeSetNum + ".");
+			console.log("The last set of numbers: " + storeSetNum + ".\n");
 		}
 		
 	} else {
@@ -105,10 +107,10 @@ exercise1();
 
 var exercise2 = function() {
 	var lib = myLibrary();
-	 stringEmail = prompt("Input characters");
+	 stringEmail = prompt("Input email address");
 	 var callIsEmail = lib.isEmail(stringEmail);
 	 if (callIsEmail == true) {
-		console.log("Does a string follow an aaa@bbb.ccc pattern like an email address? The answer is " + inIsANumFunction + ".");
+		console.log("Does a string follow an aaa@bbb.ccc pattern like an email address? The answer is " + callIsEmail + ".");
 		lengthSection: {
 			var	calLength = stringEmail.length;
 			console.log("The total length is: " + calLength + ".");
@@ -140,4 +142,18 @@ var exercise2 = function() {
 
 };
 exercise2();
-	
+
+var exercise3 = function () {
+	var lib = myLibrary();
+	 
+	saveURL = prompt("Is the string a URL?(Does it start with http: or https:?)");
+		var callIsURL = lib.isURL(saveURL);
+		//console.log(callIsURL);
+		if (saveURL == callIsURL) {
+		} else {
+			console.log("Must pick between the two.")
+		}
+		
+			
+};
+exercise3();
