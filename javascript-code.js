@@ -27,46 +27,11 @@ var myLibrary = function () {
 		return false;		
 	};
 
-	var isURL = function (url) {
-		if (url == "http:" || url == "https:") {
-			return true;
-		} 
-		return false; 
-	};
-	var titleCase = function (word) {
-		var text = word.split(" ");
-		text.toUpperCase();
-	};
-	var actualNumber = function (convert) {
-		return parseInt(convert);
-	};	
-	var smallValueArray = function (search,digit) {
-		for (var a = 0; a < search.length; a++) {
-			if (parseInt(search[a]) > digit) {
-				return search[a];
-			} else {
-				return false;
-			}
-		}
-	};	
-	var totalValueArray = function (find) {
-		for (var a = 0; a < find.length; a++){
-			var totalNum = find[a];
-		}
-		return totalNum;
-	};
 	return {
 		"isANumber": isANumber,
-		"isEmail": isEmail,
-		"isURL": isURL,
-		"titleCase": titleCase,
-		"actualNumber": actualNumber,
-		"smallValueArray": smallValueArray,
-		"totalValueArray": totalValueArray
+		"isEmail": isEmail
 	};
-
 };
-
 var exercise1 = function () {
 	var lib = myLibrary();
 	 stringChar = prompt("Input phone number");
@@ -100,68 +65,19 @@ var exercise1 = function () {
 	} else {
 		console.log("Does not follow a phone number pattern.");
 
-	}
-	
-	
+	}	
 };
 exercise1();
-
 var exercise2 = function() {
 	var lib = myLibrary();
 	 stringEmail = prompt("Input email address");
 	 var callIsEmail = lib.isEmail(stringEmail);
 	 if (callIsEmail == true) {
 		console.log("Does a string follow an aaa@bbb.ccc pattern like an email address? The answer is " + callIsEmail + ".");
-		lengthSection: {
-			var	calLength = stringEmail.length;
-			console.log("The total length is: " + calLength + ".");
-		}
-		allDashSigns: {
-			var firstSign = stringEmail.indexOf("@");
-			var finalSign = stringEmail.lastIndexOf(".");
-			console.log("The first at-sign is on index: " + firstSign + ".");
-		}
-		firstSection: {
-			var userName = stringEmail.substring(0,firstSign);
-			console.log("The username of the email address: " + userName);
-		}
-		SecondSection: {
-			var afterAtSignPos = firstSign+1;
-			var provider = stringEmail.substring(afterAtSignPos,finalSign);
-			console.log("The source of provider: " + provider);
-			console.log("The last sign is on index: " + finalSign);
-		}
-		ThirdSection: {
-			var storeEmail = stringEmail.substring(finalSign + 1 ,calLength);
-			console.log("The last section of the email: " + storeEmail);
-		}
 		
 	} else {
 		console.log("Does not follow an email pattern.");
 
 	}
-
 };
 exercise2();
-
-var exercise3 = function () {
-	var lib = myLibrary();
-	var saveURL = prompt("Does it start with http: or https:?");
-		lib.isURL(saveURL);
-		console.log(lib.isURL(saveURL));
-		if (lib.isURL(saveURL) == true) {
-			console.log("This is correct of the URL");
-		} else {
-			console.log("Must pick between the two.");
-		}
-		
-};
-exercise3();
-
-var exercise9 = function () {
-var lib = myLibrary();
-	value = "42";
-	sendValue = lib.actualNumber(value);
-	console.log("The string \"" + value + "\" is converted to " + sendValue + ".");
-};
-exercise9(); 
