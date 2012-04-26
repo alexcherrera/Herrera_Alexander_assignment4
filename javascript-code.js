@@ -1,4 +1,4 @@
-var myLibrary = function (string) {
+var myLibrary = function () {
 	var isANumber = function (number) {
 		if(number.length != 12) {
 			return false;
@@ -53,7 +53,6 @@ var myLibrary = function (string) {
 		return totalNum;
 	};
 	return {
-		"string": string,
 		"isANumber": isANumber,
 		"isEmail": isEmail,
 		"isURL": isURL,
@@ -62,17 +61,45 @@ var myLibrary = function (string) {
 		"smallValueArray": smallValueArray,
 		"totalValueArray": totalValueArray
 	};
+
 };
 
 var exercise1 = function () {
 	var lib = myLibrary();
-	stringChar = prompt("Input character");
-	lib.isANumber(stringChar);
-	if (lib.isANumber(stringChar) == true) {
-		console.log("works");
+	 stringChar = prompt("Input character");
+	var inIsANumFunction = lib.isANumber(stringChar);
+	if (inIsANumFunction == true) {
+		//console.log("The question is " + inIsANumFunction + ".");
+		lengthSection: {
+			var	calLength = stringChar.length;
+			console.log("The total length is: " + calLength + ".");
+		}
+		allDashSigns: {
+			var firstDash = stringChar.indexOf("-");
+			var finalDash = stringChar.lastIndexOf("-");
+			console.log("The first dash is on index: " + firstDash + ".");
+		}
+		firstSection: {
+			var zipCode = stringChar.substring(0,firstDash);
+			console.log("The first set of numbers (zipCode): " + zipCode);
+		}
+		SecondSection: {
+			var afterfirstDashPos = firstDash + 1;
+			var secondDigits = stringChar.substring(afterfirstDashPos,finalDash-1);
+			console.log("The second set of numbers: " + secondDigits);
+			console.log("The last dash is on the index: " + finalDash);
+		}
+		ThirdSection: {
+			var storeSetNum = stringChar.substring(finalDash + 1 ,calLength - 1);
+			console.log("The last set of numbers: " + storeSetNum);
+		}
+		
+	} else {
+		console.log("Does not follow a phone number pattern");
+
 	}
 	
 	
-}
+};
 exercise1();
 	
