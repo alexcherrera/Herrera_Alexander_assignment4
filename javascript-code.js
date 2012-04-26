@@ -66,10 +66,10 @@ var myLibrary = function () {
 
 var exercise1 = function () {
 	var lib = myLibrary();
-	 stringChar = prompt("Input character");
+	 stringChar = prompt("Input characters");
 	var inIsANumFunction = lib.isANumber(stringChar);
 	if (inIsANumFunction == true) {
-		//console.log("The question is " + inIsANumFunction + ".");
+		console.log("Does a string follow a 123-456-7890 patter\nlike a phone number? The answer is " + inIsANumFunction + ".");
 		lengthSection: {
 			var	calLength = stringChar.length;
 			console.log("The total length is: " + calLength + ".");
@@ -81,25 +81,63 @@ var exercise1 = function () {
 		}
 		firstSection: {
 			var zipCode = stringChar.substring(0,firstDash);
-			console.log("The first set of numbers (zipCode): " + zipCode);
+			console.log("The first set of numbers (zipCode): " + zipCode + ".");
 		}
 		SecondSection: {
 			var afterfirstDashPos = firstDash + 1;
 			var secondDigits = stringChar.substring(afterfirstDashPos,finalDash-1);
-			console.log("The second set of numbers: " + secondDigits);
-			console.log("The last dash is on the index: " + finalDash);
+			console.log("The second set of numbers: " + secondDigits + ".");
+			console.log("The last dash is on the index: " + finalDash + ".");
 		}
 		ThirdSection: {
 			var storeSetNum = stringChar.substring(finalDash + 1 ,calLength - 1);
-			console.log("The last set of numbers: " + storeSetNum);
+			console.log("The last set of numbers: " + storeSetNum + ".");
 		}
 		
 	} else {
-		console.log("Does not follow a phone number pattern");
+		console.log("Does not follow a phone number pattern.");
 
 	}
 	
 	
 };
 exercise1();
+
+var exercise2 = function() {
+	var lib = myLibrary();
+	 stringEmail = prompt("Input characters");
+	 var callIsEmail = lib.isEmail(stringEmail);
+	 if (callIsEmail == true) {
+		console.log("Does a string follow an aaa@bbb.ccc pattern like an email address? The answer is " + inIsANumFunction + ".");
+		lengthSection: {
+			var	calLength = stringEmail.length;
+			console.log("The total length is: " + calLength + ".");
+		}
+		allDashSigns: {
+			var firstSign = stringEmail.indexOf("@");
+			var finalSign = stringEmail.lastIndexOf(".");
+			console.log("The first at-sign is on index: " + firstSign + ".");
+		}
+		firstSection: {
+			var userName = stringEmail.substring(0,firstSign);
+			console.log("The username of the email address: " + userName);
+		}
+		SecondSection: {
+			var afterAtSignPos = firstSign + 1;
+			var provider = stringEmail.substring(afterAtSignPos,finalSign-1);
+			console.log("The source of provider: " + provider);
+			console.log("The last sign is on index: " + finalSign);
+		}
+		ThirdSection: {
+			var storeEmail = stringEmail.substring(finalSign + 1 ,calLength - 1);
+			console.log("The last section of the email: " + storeEmail);
+		}
+		
+	} else {
+		console.log("Does not follow an email pattern.");
+
+	}
+
+};
+exercise2();
 	
