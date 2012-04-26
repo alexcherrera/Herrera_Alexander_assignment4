@@ -28,9 +28,10 @@ var myLibrary = function () {
 	};
 
 	var isURL = function (url) {
-		if (url.indexOf("http:")==0 || url.indexOf("https:")==0) {
+		if (url == "http:" || url == "https:") {
 			return true;
-		}
+		} 
+		return false; 
 	};
 	var titleCase = function (word) {
 		var text = word.split(" ");
@@ -125,13 +126,13 @@ var exercise2 = function() {
 			console.log("The username of the email address: " + userName);
 		}
 		SecondSection: {
-			var afterAtSignPos = firstSign + 1;
-			var provider = stringEmail.substring(afterAtSignPos,finalSign-1);
+			var afterAtSignPos = firstSign+1;
+			var provider = stringEmail.substring(afterAtSignPos,finalSign);
 			console.log("The source of provider: " + provider);
 			console.log("The last sign is on index: " + finalSign);
 		}
 		ThirdSection: {
-			var storeEmail = stringEmail.substring(finalSign + 1 ,calLength - 1);
+			var storeEmail = stringEmail.substring(finalSign + 1 ,calLength);
 			console.log("The last section of the email: " + storeEmail);
 		}
 		
@@ -145,15 +146,22 @@ exercise2();
 
 var exercise3 = function () {
 	var lib = myLibrary();
-	 
-	saveURL = prompt("Is the string a URL?(Does it start with http: or https:?)");
-		var callIsURL = lib.isURL(saveURL);
-		//console.log(callIsURL);
-		if (saveURL == callIsURL) {
+	var saveURL = prompt("Does it start with http: or https:?");
+		lib.isURL(saveURL);
+		console.log(lib.isURL(saveURL));
+		if (lib.isURL(saveURL) == true) {
+			console.log("This is correct of the URL");
 		} else {
-			console.log("Must pick between the two.")
+			console.log("Must pick between the two.");
 		}
 		
-			
 };
 exercise3();
+
+var exercise9 = function () {
+var lib = myLibrary();
+	value = "42";
+	sendValue = lib.actualNumber(value);
+	console.log("The string \"" + value + "\" is converted to " + sendValue + ".");
+};
+exercise9(); 
