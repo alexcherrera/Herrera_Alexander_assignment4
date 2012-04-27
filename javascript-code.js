@@ -1,4 +1,4 @@
-var myLibrary = function () {
+var myLibrary = function () {//Better understand functions and calling them. 
 	var isANumber = function (number) {
 		if(number.length != 12) {
 			return false;
@@ -15,7 +15,7 @@ var myLibrary = function () {
 	};
 	var isEmail = function (email) {
 		var b1 = false;
-		for (var e = 0; e < email.length; e++) {
+		for (var e = 0; e < email.length; e++) {//Better understand now for loops and if statements.
 			if (email.charAt(e) == '@' && e != 0 && !b1) {
 				b1 = true;
 			
@@ -42,7 +42,7 @@ var myLibrary = function () {
 		}
 		return str;
 	};	
-	var separator = function (list,sep1,sep2) {
+	var separator = function (list,sep1,sep2) {//Better understand sending and receiving arugments and parameters.
 		var old ="";
 		var n = list;
 			while (n != old) {
@@ -55,13 +55,53 @@ var myLibrary = function () {
     	var num = parseFloat(num);
 		return num.toFixed(places);
 	};	
-	return {
+	var fuzzyNum = function(num1, num2, pct) {
+        return (num1>= num2*(1-pct/100)) && (num1<=num2*(1+pct/100));
+	};
+	/*var numDays = function () {
+
+	};*/
+	var actualNumber = function (convert) {
+		return parseInt(convert,10);
+	};	
+	var smallValueArray = function (array, num) {
+		var min=-1;
+			for(var i=0; i<array.length; i++)
+			{
+				if(array[i]>num)
+					if(min==-1)
+					 min=array[i];
+					else
+					 min=Math.min(array[i],min);
+			}
+			return min;
+	};	
+	var totalValueArray = function (array) {
+		var total=0;
+		for(var i=0; i<array.length; i++)
+		{
+			if(typeof array[i]=="number")
+				total+=array[i];
+		}
+		return total;
+	};
+	var arrayObj = function () {
+
+	};
+
+	return {//Returning objects and or values, I had trouble figuring out but now understand it more.
 		"isANumber": isANumber,
 		"isEmail": isEmail,
 		"isURL": isURL,
 		"titleCase": titleCase,
 		"separator": separator,
-		"format": format
+		"format": format,
+		"fuzzyNum": fuzzyNum,
+		//"numDays": numDays,
+		"actualNumber": actualNumber,
+		"smallValueArray": smallValueArray,
+		"totalValueArray": totalValueArray
+		//"arrayObj": arrayObj
 	};
 };
 var exercise1 = function () {
@@ -121,8 +161,43 @@ var exercise6 = function () {
 	console.log(callFormat);
 };
 exercise6();
+var exercise7 = function () {
+	var lib = myLibrary();
+	var firstNum = prompt("Input first number:");
+	var secondNum = prompt("Input second number:");
+	var percent = prompt("Input percent:");
+	var callFuzzyNum = lib.fuzzyNum(firstNum,secondNum,percent);
+	console.log(callFuzzyNum);
 
-
-
-
+};
+exercise7();
+/*var exercise8 = function () {
+	
+};
+exercise8();*/
+var exercise9 = function () {
+	var lib = myLibrary();
+	var stringNum = "42";
+	var callActualNumber = lib.actualNumber(stringNum);
+	console.log(callActualNumber);
+};
+exercise9();
+var exercise10 = function() {
+	var lib = myLibrary();
+	var inArrayValue = [5,8,14];
+	var valueGiven= prompt("Input value:");
+	var callSmallValueArray = lib.smallValueArray(inArrayValue,valueGiven);
+	console.log(callSmallValueArray);
+};
+exercise10();
+var exercise11 = function() {
+	var lib = myLibrary();
+	var arrayNums = [7,4,"hello",9];
+	var callTotalValueArray = lib.totalValueArray(arrayNums);
+	console.log(callTotalValueArray);
+};
+exercise11();
+/*var exercise12 = function() {
+};
+exercise12();*/
 
