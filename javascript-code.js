@@ -29,17 +29,41 @@ var myLibrary = function () {
 	var isURL = function (url) {
 		return url.indexOf("http:")==0 || url.indexOf("https:")==0;
 	};
+	var titleCase = function (word) {
+		var a= word.split(" ");
+		var str= "";
+		for(var i=0; i<a.length; i++) {
+			str+= a[i].charAt(0).toUpperCase();
+			if(a.length>0) 
+				str+=a[i].substring(1);
+				console.log(str);
+			if (i!=a.length) 
+				str+=" ";
+		}
+		return str;
+	};	
+	var separator = function (list,sep1,sep2) {
+		var old ="";
+		var n = list;
+			while(n != old) {
+		 		old = n;
+		 		n = n.replace(sep1,sep2);
+		 	}	
+		 	return n;
+	};
 	return {
 		"isANumber": isANumber,
 		"isEmail": isEmail,
-		"isURL": isURL
+		"isURL": isURL,
+		"titleCase": titleCase,
+		"separator": separator
 	};
 };
 var exercise1 = function () {
-	var lib = myLibrary();
+	lib = myLibrary();
 	var stringChar = prompt("Input phone number");
-	var inIsANumFunction = lib.isANumber(stringChar);
-	if (inIsANumFunction == true) {
+	var inIsANum = lib.isANumber(stringChar);
+	if (inIsANum == true) {
 		console.log("Does a string follow a 123-456-7890 patter\nlike a phone number? The answer is " + inIsANumFunction + ".");
 		
 	} else {
@@ -62,12 +86,33 @@ exercise2();
 var exercise3 = function () {
 	var lib = myLibrary();
 	var saveURL = prompt("Does it start with http: or https:?");
-	lib.isURL(saveURL);
-		console.log(lib.isURL(saveURL));
-		if (lib.isURL(saveURL) == true) {
+	var callIsURL = lib.isURL(saveURL);
+		console.log(callIsURL);
+		if (callIsURL == true) {
 			console.log("This is correct of the URL");
 		} else {
 			console.log("Must pick between the two.");
 		}
 };
 exercise3();
+var exercise4 = function () {
+	var lib = myLibrary();
+	var storedString = "good morning laura";
+	var callTitleCase = lib.titleCase(storedString);
+};
+exercise4();
+var exercise5 = function () {
+	var lib = myLibrary();
+	var stringList = "a,b,c";
+	var firstSign = prompt("What sign to change?");
+	var secondSign = prompt("To what sign?");
+	var callSeparator = lib.separator(stringList,firstSign,secondSign);
+	console.log(callSeparator);
+};
+exercise5();
+
+
+
+
+
+
